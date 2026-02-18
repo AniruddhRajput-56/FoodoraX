@@ -1,5 +1,5 @@
-// import User from "./User";
-// import UserClass from "./userclass";
+import User from "./User";
+import UserClass from "./Userclass";
 import {Component} from "react"; // destructure 
 
 
@@ -21,7 +21,7 @@ class About extends Component{
         <div>
             <h1>This is About Us Page</h1>
             {/* <User name={"Aniruddh"} location={"India"} contact={"1234567890"}/> */}
-            {/* <UserClass name={"Aniruddh"} location={"India"} contact={"1234567890"}/> */}
+            <UserClass name={"Aniruddh"} location={"India"} contact={"1234567890"}/>
 
         </div>
          );
