@@ -1,0 +1,35 @@
+{
+  "name": "react-project",
+  "version": "1.0.0",
+  "description": "This is food delivery web",
+  "homepage": "https://github.com/AniruddhRajput-56/React-Project#readme",
+  "bugs": {
+    "url": "https://github.com/AniruddhRajput-56/React-Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AniruddhRajput-56/React-Project.git"
+  },
+  "license": "ISC",
+  "author": "Aniruddh",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "axios": "^1.13.5",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.30.3"
+  },
+  "browserslist": [
+    "last 4 versions"
+  ],
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.16.4"
+  }
+}
