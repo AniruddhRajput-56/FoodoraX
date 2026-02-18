@@ -1,4 +1,4 @@
-import User from "./user";
+import User from "./User";
 import UserClass from "./userclass";
 import {Component} from "react"; // destructure 
 
