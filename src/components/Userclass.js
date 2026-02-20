@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class Userclass extends React.Component{
+class UserClass extends React.Component{
         
     constructor(props){
     //JavaScript does not allow using this . Until parent class constructor is executed
@@ -50,4 +50,4 @@ class Userclass extends React.Component{
     }
 };
 
-export default Userclass;
+export default UserClass;

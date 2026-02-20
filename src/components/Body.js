@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Res_card from "./Res_card.js";
 import Shimmerui from "./Shimmerui.js";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+
 
 
 
@@ -12,6 +14,7 @@ const Body=()=>{
   const[FilteredRes,setFilteredRes]= useState([]);
 
   const [searchText, setSearchText] = useState("");
+  
 
   useEffect(()=>{
     fetchdata();
@@ -42,6 +45,12 @@ const Body=()=>{
     // setFilteredRes(
     //   json?.data.cards[4]?.card.card?.gridElements?.infoWithStyle?.restaurants
     // );
+  };
+
+  const onlinestatus= useOnlineStatus();
+
+  if(onlinestatus===false){
+    return <h2>Look You are Offline</h2>
   };
 
  

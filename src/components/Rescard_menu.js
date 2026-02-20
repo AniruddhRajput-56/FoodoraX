@@ -77,24 +77,16 @@
 import { useEffect, useState } from "react";
 import Shimmerui from "./Shimmerui";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import useRestaurantmenu from "../utils/useRestaurantmenu.js";
+
 
 const Rescard_menu = () => {
   const { resid } = useParams();
-  const [menu, setMenu] = useState(null);
+
   const [expandedItem, setExpandedItem] = useState(null);
 
+  const menu = useRestaurantmenu(resid);
 
-  useEffect(() => {
-    fetchmenu();
-  }, []);
-
-  const fetchmenu = async () => {
-    const data = await fetch(MENU_API + resid);
-    const json = await data.json();
-    console.log(json);
-    setMenu(json?.data);
-  };
 
   // 🔥 Loading state
   if (!menu) return <Shimmerui />;
@@ -310,7 +302,7 @@ return (
 
         return (
           <div key={title}>
-            <h2 className="category-title">{title}</h2>
+            
 
             {nestedCategories?.map((nested) => (
               <div

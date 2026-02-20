@@ -208,13 +208,15 @@ li{
 .footer{
     background-color: #ec6308;
     width: 100%;
-    height:100px;
      color: white;
     border: 2px solid rgb(6, 6, 6);
     border-radius: 2%;
+     text-align: center;
+  padding: 10px;
  
      
 }
+
 .ulist{
     display: flex;
     flex-direction: column;
