@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
@@ -7,11 +7,16 @@ import Contactus from "./components/Contactus.js";
 import Error from "./components/Error.js";
 import Rescard_menu from "./components/Rescard_menu.js";
 
-import Footer from "./components/Footer,.js";
+import Footer from "./components/Footer.js";
 import { createBrowserRouter, RouterProvider,Outlet} from "react-router-dom";
 
 
-
+// lazy loading or code splitting 
+// lazy is function takes a function as an argument and that function should return a promise which resolves to a module with a default export containing a React component.
+// inside import() we have to give the path of the component which we want to load lazily and it should be a function which returns a promise .
+// create a separate chunk for the component which we want to load lazily and that chunk will be loaded only when we need it.
+// suspense is a component which is used to wrap the lazy loaded component and it takes a fallback prop which is used to show a fallback UI while the lazy loaded component is being loaded.
+const Grocery = lazy(() => import("./components/Grocery"));
 
 // const heading=<h2>Aniruddh</h2>
 
@@ -26,18 +31,17 @@ import { createBrowserRouter, RouterProvider,Outlet} from "react-router-dom";
 //     </div>
 //   );
 // };
-
-
-
 // react element (object)--> Html element,componet(render)
 
 const App =()=>{
   return (
-   <div className="app">
-    <Header />
-    <Outlet /> 
-    <Footer />
-   </div>
+   <div className="min-h-screen flex flex-col">
+  <Header />
+  <main className="flex-grow">
+    <Outlet />
+  </main>
+  <Footer />
+</div>
   );
 
 };
@@ -60,8 +64,12 @@ const appRouter = createBrowserRouter([
         element: <Contactus />,
       },
       {
+        path: "grocery",
+        element: <Grocery/>,
+      },
+      {
         path: "restaurants/:resid",
-        element: <Rescard_menu />,
+        element: <Rescard_menu />, 
       },
     ],
   },

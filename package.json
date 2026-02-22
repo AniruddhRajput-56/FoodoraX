@@ -19,17 +19,20 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.2.0",
     "axios": "^1.13.5",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^6.30.3"
+    "react-router-dom": "^6.30.3",
+    "tailwindcss": "^4.2.0"
   },
   "browserslist": [
     "last 4 versions"
   ],
   "devDependencies": {
+    "@parcel/transformer-react-refresh-wrap": "^2.9.3",
     "buffer": "^6.0.3",
-    "parcel": "^2.16.4"
+    "parcel": "^2.9.3"
   }
 }
