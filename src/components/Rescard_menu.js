@@ -8,6 +8,8 @@ const Rescard_menu=( )=>{
     const{resid} = useParams();
     const menu = useRestaurantmenu(resid);
 
+    const [expandedCategory, setExpandedCategory] = useState(null);
+
   if (!menu) return <MenuShimmer />;
 
   // Restaurant Info (dynamic safe access)
@@ -21,43 +23,45 @@ const Rescard_menu=( )=>{
 
     // Get all ItemCategory cards
  const itemCategories = regularCards?.filter(
-  (c) =>
-    c?.card?.card?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" 
+  (c) =>{
+        const type = c?.card?.card?.["@type"];
+        return (
+          type ===
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" 
+        );
+      }
 );
 
     return(
-        <div className="max-w-205 mx-auto px-5 py-6">
-   <div className=" max-w-3xl mx-auto bg-gray-100 p-6 rounded-2xl shadow-md">
+        <div className="max-w-205 mx-auto px-5 py-6 ">
+   <div className=" max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
    <h1 className="text-3xl font-bold mb-3">{name}</h1>
 
    {/* Rating + Cost */}
-   <div className="flex  gap-3 text-sm text-gray-700 mb-3">
-   <p className=" flex  gap-1 font-semibold">{cuisines.join(", ")}</p>
-     <span className="flex gap-1 font-semibold">
+   <div className="flex justify-center items-center flex-wrap gap-3 text-sm text-gray-700 mb-3">
+   <p className=" font-semibold">{cuisines.join(", ")}</p>
+     <span className=" font-semibold">
        ⭐ {avgRating} ({totalRatingsString})
      </span>
      <span>•</span>
-    <span className="flex  gap-1 font-semibold">{costForTwoMessage}</span>
+    <span className="font-semibold">{costForTwoMessage}</span>
    </div>
 
      </div>
 
         <h2 className="text-xl font-semibold m-4">❧ — MENU — ❧</h2>
 
-        {itemCategories?.map((category)=>(
-          <Restaurant_Categories key={category?.card?.card?.title} data={category?.card?.card} />
-        ))}
-
-        
-              
+        {itemCategories?.map((category , index)=>(
+          <Restaurant_Categories
+           key={category?.card?.card?.title} 
+           data={category?.card?.card} 
+           expandedCategory={index === expandedCategory && true}
+           setExpandedCategory={()=> setExpandedCategory(index)} 
+           />
+        ))}   
         </div> 
-    );
-
-        
+    );        
     };
-
-   
 
 export default Rescard_menu;   
 

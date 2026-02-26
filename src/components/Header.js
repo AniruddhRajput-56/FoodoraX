@@ -1,49 +1,10 @@
-// import { LOGO_URL } from "../utils/constants";
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import useOnlineStatus from "../utils/useOnlineStatus";
 
-
-
-// const Header=()=>{
-//   const[btnName,setBtnName]=useState("Login");
-
-//   const onlinestatus= useOnlineStatus();
-
-//     return(
-//       <div className="header">
-//         <div className="logo">
-//           <img src={LOGO_URL} alt="applogo" className="img1"></img>
-          
-//         </div>
-//          <div className="nav">
-//         <ul>
-//           <li>Online Status : {onlinestatus ? "🟢" : "🔴"}</li>
-//             <Link to="/"><li>Home </li></Link>
-//             <Link to="/about"><li>About us </li></Link>
-//              <Link to="/contact"><li>Contact Us</li></Link>
-//              <Link to="/grocery"><li>Grocery</li></Link>
-//              <li>Cart </li>
-//              <button
-//              className="btn2"
-//              onClick={()=>{
-//               // Conditional (Ternary) Operator => conditional ? exprIfTrue : exprIfFalse
-//               btnName==="Login"?setBtnName("Logout"):setBtnName("Login");
-//              }}
-//              >{btnName}</button>
-//        </ul>
-//          </div>
-
-//       </div>
-//     );
-// };
-
-// export default Header;
 
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -51,97 +12,112 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className=" m-4 h-24 bg-[#fbfefc] shadow-md rounded-lg">
-      
+    <header className="bg-green-100 shadow-lg px-4 sticky top-0 z-50 py-2">
       {/* Top Bar */}
-      <div className="flex items-center justify-between px-4 py-2 md:py-3 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
+      <div className="flex items-center justify-between px-4 py-3 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
         
         {/* Logo */}
         <img
           src={LOGO_URL}
           alt="applogo"
-          className="h-20 sm:h-14 md:h-20 transition-all duration-200 hover:scale-105"
+          className="w-10 sm:w-14 md:w-18 rounded-full cursor-pointer"
         />
 
-        {/* Hamburger (mobile) */}
+        {/* Hamburger */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-3xl p-2"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          ☰
+          {menuOpen ? "✕" : "☰"}
         </button>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-6 text-[17px] font-medium">
           <li>Online: {onlineStatus ? "🟢" : "🔴"}</li>
 
-          <Link to="/" className="hover:text-blue-500">
-            <li>Home</li>
-          </Link>
+          <li>
+            <Link to="/" className="hover:text-blue-500">
+              Home
+            </Link>
+          </li>
 
-          <Link to="/about" className="hover:text-blue-500">
-            <li>About</li>
-          </Link>
+          <li>
+            <Link to="/about" className="hover:text-blue-500">
+              About
+            </Link>
+          </li>
 
-          <Link to="/contact" className="hover:text-blue-500">
-            <li>Contact</li>
-          </Link>
+          <li>
+            <Link to="/contact" className="hover:text-blue-500">
+              Contact
+            </Link>
+          </li>
 
-          <Link to="/grocery" className="hover:text-blue-500">
-            <li>Grocery</li>
-          </Link>
+          <li>
+            <Link to="/grocery" className="hover:text-blue-500">
+              Grocery
+            </Link>
+          </li>
 
           <li>Cart</li>
 
-          <button
-            className="px-4 py-1 border rounded-md hover:bg-orange-500 hover:text-white transition"
-            onClick={() =>
-              btnName === "Login"
-                ? setBtnName("Logout")
-                : setBtnName("Login")
-            }
-          >
-            {btnName}
-          </button>
+          <li>
+            <button
+              className="px-4 py-1 border rounded-md hover:bg-orange-500 hover:text-white transition"
+              onClick={() =>
+                setBtnName(btnName === "Login" ? "Logout" : "Login")
+              }
+            >
+              {btnName}
+            </button>
+          </li>
         </ul>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="md:hidden flex flex-col gap-3 px-4 pb-4 text-[16px] font-medium">
+        <ul className="md:hidden flex flex-col gap-4 px-5 pb-5 pt-2 text-[16px] font-medium border-t bg-[#fbfefc]">
           <li>Online: {onlineStatus ? "🟢" : "🔴"}</li>
 
-          <Link to="/" className="hover:text-blue-500" onClick={() => setMenuOpen(false)}>
-            <li>Home</li>
-          </Link>
+          <li>
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+               🏠 Home
+            </Link>
+          </li>
 
-          <Link to="/about" className="hover:text-blue-500" onClick={() => setMenuOpen(false)}>
-            <li>About</li>
-          </Link>
+          <li>
+            <Link to="/about" onClick={() => setMenuOpen(false)}>
+              ℹ️ About Us
+            </Link>
+          </li>
 
-          <Link to="/contact" className="hover:text-blue-500" onClick={() => setMenuOpen(false)}>
-            <li>Contact</li>
-          </Link>
+          <li>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>
+              📞 Contact Us
+            </Link>
+          </li>
 
-          <Link to="/grocery" className="hover:text-blue-500" onClick={() => setMenuOpen(false)}>
-            <li>Grocery</li>
-          </Link>
+          <li>
+            <Link to="/grocery" onClick={() => setMenuOpen(false)}>
+            🛍️ Grocery
+            </Link>
+          </li>
 
           <li>Cart</li>
 
-          <button
-            className="px-4 py-1 border rounded-md hover:bg-orange-500 hover:text-white transition"
-            onClick={() =>
-              btnName === "Login"
-                ? setBtnName("Logout")
-                : setBtnName("Login")
-            }
-          >
-            {btnName}
-          </button>
+          <li>
+            <button
+              className="w-full px-4 py-2 border rounded-md hover:bg-orange-500 hover:text-white transition"
+              onClick={() =>
+                setBtnName(btnName === "Login" ? "Logout" : "Login")
+              }
+            >
+              {btnName}
+            </button>
+          </li>
         </ul>
       )}
-    </div>
+    </header>
   );
 };
 

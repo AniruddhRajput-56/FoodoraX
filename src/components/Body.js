@@ -3,7 +3,7 @@ import Res_card from "./Res_card.js";
 import Shimmerui from "./Shimmerui.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
-import { withpromotedlabel } from "./Res_card.js";
+import { withopenlabel } from "./Res_card.js";
 
 
 
@@ -11,7 +11,7 @@ const Body = () => {
   const [ListOfRes, setListOfRes] = useState([]);
   const [FilteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const Res_cardwithpromotelabel = withpromotedlabel(Res_card);
+  const Res_cardwithopenlabel = withopenlabel(Res_card);
 
   useEffect(() => {
     fetchdata();
@@ -45,7 +45,7 @@ const Body = () => {
   if (ListOfRes?.length === 0) return <Shimmerui />;
 
   return (
-    <div className="p-4 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
+    <div className=" bg-[#f6f1ec]  p-4 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
       {/* Search + Filter */}
       <div className="flex flex-wrap items-center gap-3 mb-4">
         <input
@@ -58,7 +58,7 @@ const Body = () => {
         />
 
         <button
-          className="h-8 px-2 shadow-md rounded-md bg-gray-50 border hover:bg-orange-500 hover:text-white transition"
+          className="px-4 py-1.5 text-sm -mt-1 sm:mt-1 font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
           onClick={() => {
             const updatereslist = ListOfRes.filter((res) =>
               res.info.name
@@ -72,7 +72,7 @@ const Body = () => {
         </button>
 
         <button
-          className="h-8 px-3 bg-gray-50 shadow-md rounded-md border hover:bg-orange-500 hover:text-white transition"
+          className="px-4 py-1.5 text-sm -mt-1 sm:mt-1 font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
           onClick={() => {
             const updatereslist = ListOfRes.filter(
               (res) => res.info.avgRating > 4.5
@@ -85,20 +85,20 @@ const Body = () => {
       </div>
 
       {/* Restaurant Grid */}
-      <div className="  flex flex-wrap gap-4">
-        {FilteredRes.map((restaurant) => (
-          <Link
-            to={"restaurants/" + restaurant.info.id}
-            key={restaurant.info.id}
-          >
-           {restaurant.info.promoted ? (
-              <Res_cardwithpromotelabel resname={restaurant} />
-            ) : (
-              <Res_card resname={restaurant} />
-            )}
-          </Link>
-        ))}
-      </div>
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6 ">
+  {FilteredRes.map((restaurant) => (
+    <Link
+      to={"restaurants/" + restaurant.info.id}
+      key={restaurant.info.id}
+    >
+      {restaurant.info.isOpen ? (
+        <Res_cardwithopenlabel resname={restaurant} />
+      ) : (
+        <Res_card resname={restaurant} />
+      )}
+    </Link>
+  ))}
+</div>
     </div>
   );
 };
