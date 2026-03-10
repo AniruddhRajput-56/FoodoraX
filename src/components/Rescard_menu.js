@@ -13,7 +13,7 @@ const Rescard_menu=( )=>{
   if (!menu) return <MenuShimmer />;
 
   // Restaurant Info (dynamic safe access)
-  const { name, cuisines, costForTwoMessage ,avgRating,totalRatingsString} =
+  const { name, cuisines, costForTwoMessage ,avgRating,totalRatingsString , locality} =
   menu?.cards[2]?.card?.card?.info;
 
   // Get REGULAR cards dynamically
@@ -40,6 +40,7 @@ const Rescard_menu=( )=>{
    {/* Rating + Cost */}
    <div className="flex justify-center items-center flex-wrap gap-3 text-sm text-gray-700 mb-3">
    <p className=" font-semibold">{cuisines.join(", ")}</p>
+   
      <span className=" font-semibold">
        ⭐ {avgRating} ({totalRatingsString})
      </span>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
 import Res_card from "./Res_card.js";
 import Shimmerui from "./Shimmerui.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import { withopenlabel } from "./Res_card.js";
+import UserContext from "../utils/UserContext.js";
 
 
 
@@ -13,14 +14,17 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const Res_cardwithopenlabel = withopenlabel(Res_card);
 
+  const {loggedinuser , setusername}=useContext(UserContext);
+
   useEffect(() => {
-    fetchdata();
+    fetchdata(); 
   }, []);
 
   const fetchdata = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.0386956&lng=72.6307533&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    // const data = await fetch(
+    //   "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.0386956&lng=72.6307533&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    // );
+    const data = await fetch("/api/swiggy");
     const json = await data.json();
     console.log(json);
 
@@ -51,7 +55,7 @@ const Body = () => {
         <input
           type="text"
           placeholder="Search restaurant..."
-          className=" ml-4 h-8 w-55 px-2 border shadow-md rounded-md
+          className=" ml-10 h-8 w-100 px-2 border shadow-md rounded-md
                      font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -82,6 +86,15 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        {/* live change name */}
+        <label className="ml-32">UserName : </label>
+        <input className="h-8 w-50 px-2 border shadow-md rounded-md
+                     font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]" 
+        value={loggedinuser}
+        onChange={(e)=>
+          {setusername(e.target.value)}
+      }>
+        </input>
       </div>
 
       {/* Restaurant Grid */}

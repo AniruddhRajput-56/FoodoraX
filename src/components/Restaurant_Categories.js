@@ -5,7 +5,7 @@ const Restaurant_Categories = ({data, expandedCategory, setExpandedCategory }) =
     const handleclick = () => {
             setExpandedCategory();
     }
-
+   
     return(
     //    {Headers}
     <div className=" items-center text-left bg-white rounded-xl p-4 mb-6 shadow-sm">

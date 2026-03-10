@@ -1,21 +1,30 @@
 import { CDN_URL } from "../utils/constants";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const Itemlist = ({ items }) => {
 
   const [expandedItem, setExpandedItem] = useState(null);
 
+   const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItem(item));
+  };
+
   return (
     <ul className="space-y-5 mt-4">
-  {items?.map((item) => {
+  {items?.map((item , index) => {
     const info = item?.card?.info;
     const itemId = info?.id;
 
     return (
       <li
-        key={itemId}
-        className="  flex justify-between items-start gap-5 pb-5 border-b last:border-none"
+            key={itemId + "_" + index}
+        className="flex justify-between items-start gap-5 pb-5 border-b last:border-none  transition-transform duration-200 ease-in-out
+           hover:scale-[1.01]"
       >
         {/* LEFT */}
         <div className="flex-1 text-left">
@@ -71,7 +80,9 @@ const Itemlist = ({ items }) => {
             />
           )}
 
-          <button className="absolute -bottom-3 bg-white border border-gray-300 px-4 py-1 text-sm font-semibold text-green-600 rounded-lg shadow hover:bg-gray-100">
+          <button className="absolute -bottom-3 bg-white border border-gray-300 px-4 py-1 text-sm font-semibold text-green-600 rounded-lg shadow hover:bg-gray-100" 
+           onClick={() => handleAddItem(item)}
+           >
             ADD
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
@@ -6,10 +6,15 @@ import About from "./components/About.js";
 import Contactus from "./components/Contactus.js";
 import Error from "./components/Error.js";
 import Rescard_menu from "./components/Rescard_menu.js";
-
+import { useContext, useState } from "react";
 import Footer from "./components/Footer.js";
 import { createBrowserRouter, RouterProvider,Outlet} from "react-router-dom";
-
+import UserContext from "./utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appstore.js";
+import Cart from "./components/Cart.js";
+import Login from "./components/Login.js";
+import { Outlet, useLocation } from "react-router-dom";
 
 // lazy loading or code splitting 
 // lazy is function takes a function as an argument and that function should return a promise which resolves to a module with a default export containing a React component.
@@ -32,16 +37,35 @@ const Grocery = lazy(() => import("./components/Grocery"));
 //   );
 // };
 // react element (object)--> Html element,componet(render)
+// react 
 
 const App =()=>{
+
+  const [username , setusername] = useState();
+   const location = useLocation(); // ✅ get current route
+
+  useEffect (()=>{
+     const data={
+      name :"Aniruddh"
+     };
+     setusername(data.name);
+  },[]);
+
+  
+
   return (
+    <Provider store={appStore}>
    <div className="min-h-screen flex flex-col">
-  <Header />
+    <UserContext.Provider value={{loggedinuser : username , setusername}} >
+    {/* ✅ Hide Header only on login */}
+          {location.pathname !== "/login" && <Header />}
   <main className="grow">
     <Outlet />
   </main>
   <Footer />
+  </UserContext.Provider>
 </div>
+</Provider>
   );
 
 };
@@ -65,19 +89,25 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "grocery",
-        element: <Grocery/>,
+        element: (<Suspense fallback={<h1>Loading....</h1>}>
+            <Grocery />
+          </Suspense>),
       },
       {
         path: "restaurants/:resid",
         element: <Rescard_menu />, 
       },
+       {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: <Login/>,
+      },
     ],
   },
 ]);
-
-
-
-
 
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
