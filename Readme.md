@@ -1,108 +1,92 @@
-# Food Delivery App 🚀
+# 🍽️ FoodoraX
 
-# Parcel
-- Dev Build
-- Local Server
-- HMR = Hot Module Replacement
-- File Watching Algorithm - written in C++
-- Caching - Faster Builds
-- Image Optimization
-- Minification
-- Bundling
-- Compress
-- Consistent Hashing
-- Code Splitting
-- Differential Bundling - support older browsers
-- Diagnostic
-- Error Handling
-- HTTPs
-- Tree Shaking - remove unused code
-- Different dev and prod bundles
+FoodoraX is a modern **React-based food ordering web application** that allows users to explore restaurants and browse menus in real-time using the **Swiggy API**.
+The project focuses on **performance, clean UI, and scalable React architecture**.
 
+---
 
+## 🚀 Features
 
-# Namaste Food
+* 🔍 **Smart Search**
+  Quickly find restaurants using the powerful search functionality.
 
+* ⭐ **Top Rated Filter**
+  Easily filter and explore the highest-rated restaurants.
 
+* 📋 **Restaurant Menu Page**
+  View complete restaurant menus with pricing and ratings.
 
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - RestaurantContainer
- *    - RestaurantCard
- *      - Img
- *      - Name of Res, Star Rating, cuisine, delery tie
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- 
+* 🛒 **Cart System**
+  Add and manage items in the cart using **Redux state management**.
 
+* ⚡ **Optimized Performance**
+  Implemented **Lazy Loading** and **Shimmer UI** for smooth loading.
 
+* 📱 **Responsive Design**
+  Works seamlessly on **mobile, tablet, and desktop** devices.
 
- # Two types of Export/Import
- 
-- Default Export/Import
+* 🎨 **Modern UI**
+  Styled using **Tailwind CSS** for a clean and minimal interface.
 
-export default Component;
-import Component from "path";
+---
+
+## 🛠️ Tech Stack
+
+* **React.js**
+* **Redux Toolkit**
+* **React Router**
+* **Tailwind CSS**
+* **Swiggy API**
+* **Jest + React Testing Library** (for testing)
+
+---
 
 
-- Named Export/Import
+## ⚙️ Installation & Setup
 
-export const Component;
-import {Component} from "path";
+Clone the repository:
 
+```bash
+git clone https://github.com/AniruddhRajput-56/FoodoraX.git
+```
 
-# React Hooks
- (Normal JS utility functions)
-- useState() - Superpowerful State Variables in react
-- useEffect()
+Navigate to the project folder:
 
+```bash
+cd React-Project
+```
 
+Install dependencies:
 
-#  2 types Routing in web apps
- - Client Side Routing
- - Server Side Routing
+```bash
+npm install
+```
 
+Start the development server:
 
+```bash
+npm start
+```
 
- # Redux Toolkit
-  - Install @reduxjs/toolkit and react-redux
-  - Build our store
-  - Connect our store to our app
-  - Slice (cartSlice)
-  - dispatch(action)
-  - Selector
+---
 
+## 🧪 Running Tests
 
-# Types of testing (devloper)
- - Unit Testing
- - Integration Testing
- - End to End Testing - e2e testing
+```bash
+npm test
+```
 
-# Setting up Testing in our app
- - Install React Testing Library
- - Installed jest
- - Installed Babel dependencies
- - Configure Babel 
- - Configure Parcel Config file to disable default babel transpilation 
- - Jest  - npx jest --init
- - Install jsdom library
- - Install @babel/preset-react - to make JSX work in test cases
- - Include @babel/preset-react inside my babel config
- - npm i -D @testing-library/jest-dom
+---
 
- # classbsed component
-    Called Order
- - Parent Constructor is called
- -Parent Render is called
--child Constructor is called
--child Render is called
-- <DOM Updated In Singel Batch>
--child componentDidMount is called
-- Parent componentDidMount is called
- 
+## 👨‍💻 Developer
+
+**Aniruddh Rajput**
+
+GitHub:
+https://github.com/AniruddhRajput-56
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a **star ⭐ on GitHub**!

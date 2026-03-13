@@ -11,7 +11,7 @@ import Footer from "./components/Footer.js";
 import { createBrowserRouter, RouterProvider,Outlet} from "react-router-dom";
 import UserContext from "./utils/UserContext.js";
 import { Provider } from "react-redux";
-import appStore from "./utils/appstore.js";
+import appStore from "./appstore.js";
 import Cart from "./components/Cart.js";
 import Login from "./components/Login.js";
 import { Outlet, useLocation } from "react-router-dom";
