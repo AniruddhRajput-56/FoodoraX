@@ -1,5 +1,6 @@
-import React from "react";
+// This is only for study purpose to understand class component lifecycle methods and state management in class component
 
+import React from "react";
 
 class UserClass extends React.Component{
         

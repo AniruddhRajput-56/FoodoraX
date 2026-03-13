@@ -63,7 +63,7 @@ const Res_card = (props) => {
   );
 
     };
-// Higher-Order Component (HOC) to add a "PROMOTED" label to the Res_card component
+// Higher-Order Component (HOC) to add a "OPEN" label to the Res_card component
     export const withopenlabel = ()=>{
   return (props)=>{ 
     return (

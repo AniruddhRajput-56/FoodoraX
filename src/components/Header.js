@@ -45,7 +45,7 @@ const Header = () => {
           <li><Link to="/" className="hover:text-blue-500">Home</Link></li>
           <li><Link to="/about" className="hover:text-blue-500">About</Link></li>
           <li><Link to="/contact" className="hover:text-blue-500">Contact</Link></li>
-          <li><Link to="/cart">Cart - ({cartItems.length} items)</Link></li>
+          <li><Link to="/cart" className="hover:text-blue-500">Cart - ({cartItems.length} items)</Link></li>
 
           <li><Link to="/grocery" className="hover:text-blue-500">Grocery</Link></li>
           <li>
@@ -66,27 +66,59 @@ const Header = () => {
         </ul>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <ul className="md:hidden flex flex-col gap-4 px-5 pb-5 pt-2 text-[16px] font-medium border-t bg-[#fbfefc]">
-           <li>Online: {onlineStatus ? "🟢" : "🔴"}</li>
-          <li><Link to="/" onClick={() => setMenuOpen(false)}>🏠 Home</Link></li>
-          <li><Link to="/about" onClick={() => setMenuOpen(false)}>ℹ️ About Us</Link></li>
-          <li><Link to="/contact" onClick={() => setMenuOpen(false)}>📞 Contact Us</Link></li>
-          <li><Link to="/grocery" onClick={() => setMenuOpen(false)}>🛍️ Grocery</Link></li>
-          <li>Cart</li>
-          <li>
-            <button
-              className="px-4 py-1 border rounded-md bg-orange-500 text-white"
-              onClick={() =>
-                setBtnName(btnName === "Login" ? "Logout" : "Login")
-              }
-            >
-              {btnName}
-            </button>
-          </li>
-        </ul>
-      )}
+  
+     {/* Mobile Menu */}
+{menuOpen && (
+  <ul className="md:hidden flex flex-col gap-5 px-6 py-6 
+  text-[16px] font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif] 
+  font-medium bg-white rounded-xl shadow-xl mx-4 mt-2">
+
+    <li className="text-center">Online: {onlineStatus ? "🟢" : "🔴"}</li>
+
+    <li>
+      <Link to="/" className="block text-center hover:text-blue-500" onClick={() => setMenuOpen(false)}>
+        🏠 Home
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/about" className="block text-center hover:text-blue-500" onClick={() => setMenuOpen(false)}>
+        ℹ️ About Us
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/contact" className="block text-center hover:text-blue-500" onClick={() => setMenuOpen(false)}>
+        📞 Contact Us
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/grocery" className="block text-center hover:text-blue-500" onClick={() => setMenuOpen(false)}>
+        🛍️ Grocery
+      </Link>
+    </li>
+
+    <li className="text-center">
+      <Link to="/cart" className="hover:text-blue-500" onClick={() => setMenuOpen(false)}>
+        Cart - ({cartItems.length} items)
+      </Link>
+    </li>
+
+    <li className="flex justify-center">
+      <Link to="/login">
+        <button
+          className="px-5 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+          onClick={() =>
+            setBtnName(btnName === "Login" ? "Logout" : "Login")
+          }
+        >
+          {btnName}
+        </button>
+      </Link>
+    </li>
+  </ul>
+)}
     </header>
   );
 };

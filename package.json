@@ -2,13 +2,13 @@
   "name": "react-project",
   "version": "1.0.0",
   "description": "This is food delivery web",
-  "homepage": "https://github.com/AniruddhRajput-56/React-Project#readme",
+  "homepage": "https://github.com/AniruddhRajput-56/FoodoraX.git#readme",
   "bugs": {
-    "url": "https://github.com/AniruddhRajput-56/React-Project/issues"
+    "url": "https://github.com/AniruddhRajput-56/FoodoraX/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AniruddhRajput-56/React-Project.git"
+    "url": "git+https://github.com/AniruddhRajput-56/FoodoraX.git"
   },
   "license": "ISC",
   "author": "Aniruddh",
@@ -33,8 +33,17 @@
     "last 4 versions"
   ],
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
     "@parcel/transformer-react-refresh-wrap": "^2.9.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "babel-jest": "^30.3.0",
     "buffer": "^6.0.3",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "parcel": "^2.9.3"
   }
 }

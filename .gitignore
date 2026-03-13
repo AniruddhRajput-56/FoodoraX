@@ -1,14 +1,7 @@
-
 # Ignore node_modules and cache folders
 node_modules/
 .parcel-cache/
 dist/
-.env
-.DS_Store
+coverage/
 
-# Optional: Ignore system or IDE files
-*.log
-.vscode/
-.idea/
 
-.vercel
