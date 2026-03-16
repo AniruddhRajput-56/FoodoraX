@@ -48,51 +48,56 @@ const Body = () => {
   return (
     <div className=" bg-[#f6f1ec]  p-4 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
       {/* Search + Filter */}
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <input
-          type="text"
-          placeholder="Search restaurant..."
-          className=" ml-12 h-8 w-96 px-2 border shadow-md rounded-md
-                     font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
+     <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3 mb-4 px-2 sm:px-0">
+  
+  {/* Search Input */}
+  <input
+    type="text"
+    placeholder="Search restaurant..."
+    className="w-full sm:ml-12 sm:w-96 h-8 px-2 border shadow-md rounded-md
+               font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
+    value={searchText}
+    onChange={(e) => setSearchText(e.target.value)}
+  />
 
-        <button
-          className="px-4 py-1.5 text-sm  font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
-          onClick={() => {
-            const updatereslist = ListOfRes.filter((res) =>
-              res.info.name
-                .toLowerCase()
-                .includes(searchText.toLowerCase())
-            );
-            setFilteredRes(updatereslist);
-          }}
-        >
-          Search
-        </button>
+  {/* Search Button */}
+  <button
+    className="w-full sm:w-auto px-4 py-1.5 text-sm font-semibold bg-[#cce3d0] text-gray-800 rounded-md shadow-sm hover:bg-[#b4d6bd] transition duration-200"
+    onClick={() => {
+      const updatereslist = ListOfRes.filter((res) =>
+        res.info.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredRes(updatereslist);
+    }}
+  >
+    Search
+  </button>
 
-        <button
-          className="px-4 py-1.5 text-sm  font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
-          onClick={() => {
-            const updatereslist = ListOfRes.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setFilteredRes(updatereslist);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-        {/* live change name */}
-        <label className="ml-32">UserName : </label>
-        <input className="h-8 w-50 px-2 border shadow-md rounded-md
-                     font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]" 
-        value={loggedinuser}
-        onChange={(e)=>
-          {setusername(e.target.value)}
-      }>
-        </input>
-      </div>
+  {/* Top Rated Button */}
+  <button
+    className="w-full sm:w-auto px-4 py-1.5 text-sm font-semibold bg-[#cce3d0] text-gray-800 rounded-md shadow-sm hover:bg-[#b4d6bd] transition duration-200"
+    onClick={() => {
+      const updatereslist = ListOfRes.filter(
+        (res) => res.info.avgRating > 4.5
+      );
+      setFilteredRes(updatereslist);
+    }}
+  >
+    Top Rated Restaurants
+  </button>
+
+  {/* Username */}
+  <div className="flex w-full sm:w-auto items-center gap-2">
+    <label className="sm:ml-32 text-sm font-medium whitespace-nowrap">UserName :</label>
+    <input
+      className="flex-1 sm:w-50 h-8 px-2 border shadow-md rounded-md
+                 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
+      value={loggedinuser}
+      onChange={(e) => setusername(e.target.value)}
+    />
+  </div>
+
+</div>
 
       {/* Restaurant Grid */}
       <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6 ">

@@ -27,7 +27,7 @@ const Header = () => {
         <img
           src={LOGO_URL}
           alt="applogo"
-          className="w-15 sm:w-14 md:w-18 rounded-full cursor-pointer"
+          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full cursor-pointer object-cover"
         />
         
 
