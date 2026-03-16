@@ -19,9 +19,9 @@ const Header = () => {
 
 
   return (
-    <header className="bg-green-100 shadow-lg px-4  top-0 z-50 py-2">
+    <header className="bg-green-100 shadow-lg px-3 py-1 top-0 z-50">
       {/* Top Bar */}
-      <div className="flex items-center justify-between px-4 py-3 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
+      <div className="flex items-center justify-between px-2 py-1 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
         
         {/* Logo */}
         <img
