@@ -49,29 +49,29 @@ const Body = () => {
     <div className=" bg-[#f6f1ec]  p-4 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]">
       {/* Search + Filter */}
      <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3 mb-4 px-2 sm:px-0">
-  
-  {/* Search Input */}
-  <input
-    type="text"
-    placeholder="Search restaurant..."
-    className="w-full sm:ml-12 sm:w-96 h-8 px-2 border shadow-md rounded-md
-               font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
-    value={searchText}
-    onChange={(e) => setSearchText(e.target.value)}
-  />
 
-  {/* Search Button */}
-  <button
-    className="w-full sm:w-auto px-4 py-1.5 text-sm font-semibold bg-[#cce3d0] text-gray-800 rounded-md shadow-sm hover:bg-[#b4d6bd] transition duration-200"
-    onClick={() => {
-      const updatereslist = ListOfRes.filter((res) =>
-        res.info.name.toLowerCase().includes(searchText.toLowerCase())
-      );
-      setFilteredRes(updatereslist);
-    }}
-  >
-    Search
-  </button>
+  {/* Search Input + Button on same line */}
+  <div className="flex w-full sm:w-auto gap-2">
+    <input
+      type="text"
+      placeholder="Search restaurant..."
+      className="flex-1 sm:w-80 md:w-96 h-8 px-2 border shadow-md rounded-md
+                 font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
+      value={searchText}
+      onChange={(e) => setSearchText(e.target.value)}
+    />
+    <button
+      className="px-4 py-1.5 text-sm font-semibold bg-[#cce3d0] text-gray-800 rounded-md shadow-sm hover:bg-[#b4d6bd] transition duration-200 whitespace-nowrap"
+      onClick={() => {
+        const updatereslist = ListOfRes.filter((res) =>
+          res.info.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFilteredRes(updatereslist);
+      }}
+    >
+      Search
+    </button>
+  </div>
 
   {/* Top Rated Button */}
   <button
@@ -88,9 +88,9 @@ const Body = () => {
 
   {/* Username */}
   <div className="flex w-full sm:w-auto items-center gap-2">
-    <label className="sm:ml-32 text-sm font-medium whitespace-nowrap">UserName :</label>
+    <label className="text-sm font-medium whitespace-nowrap">UserName :</label>
     <input
-      className="flex-1 sm:w-50 h-8 px-2 border shadow-md rounded-md
+      className="w-24 h-7 px-2 text-sm border shadow-md rounded-md
                  font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
       value={loggedinuser}
       onChange={(e) => setusername(e.target.value)}
