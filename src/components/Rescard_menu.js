@@ -33,7 +33,7 @@ const Rescard_menu=( )=>{
 );
 
     return(
-        <div className="max-w-205 mx-auto px-5 py-6 ">
+        <div className="max-w-3xl mx-auto px-5 py-6">
    <div className=" max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
    <h1 className="text-3xl font-bold mb-3">{name}</h1>
 

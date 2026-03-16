@@ -14,15 +14,15 @@ const Res_card = (props) => {
   } = resname?.info;
 
   return (
-    <div className="m-1.25 h-auto w-65 rounded-[5%] border-2 border-[#ebdede] bg-[#fffef9]  
+    <div className="m-1.5 h-auto w-64 rounded-[5%] border-2 border-[#ebdede] bg-[#fffef9]
                     font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]
                     transition-transform duration-200 hover:scale-[1.03] hover:border-black hover:shadow-lg cursor-pointer">
-      
+
       <div className="relative">
         <img
-          className="h-42.5 w-full rounded-[5%] object-cover"
+          className="h-44 w-full rounded-[5%] object-cover"
           src={CDN_URL + cloudinaryImageId}
-          alt={name} 
+          alt={name}
         />
 
         {/* PRICE LABEL */}
@@ -31,51 +31,48 @@ const Res_card = (props) => {
         </div>
       </div>
 
-     <div className="p-2 space-y-1.5">
-  {/* NAME */}
-  <h3 className="text-left font-semibold px-1 leading-tight">
-    {name}
-  </h3>
+      <div className="p-2 space-y-2">
+        {/* NAME */}
+        <h3 className="text-left font-semibold px-1 leading-tight">
+          {name}
+        </h3>
 
-  {/* RATING + TIME */}
-  <div className="flex items-center px-1 text-md">
-    <span className="flex items-center justify-center w-4 h-4 rounded-full bg-green-600 text-white text-sm mr-1">
-      ★
-    </span>
+        {/* RATING + TIME */}
+        <div className="flex items-center px-1 text-base">
+          <span className="flex items-center justify-center w-4 h-4 rounded-full bg-green-600 text-white text-sm mr-1">
+            ★
+          </span>
+          <span className="text-gray-800 pr-1">{avgRating}</span>
+          <h4>•</h4>
+          <span className="text-gray-700 px-1">{sla?.slaString}</span>
+        </div>
 
-    <span className=" text-gray-800 pr-1">{avgRating}</span>
-    <h4>•</h4>
-    <span className="text-gray-700 px-1">{sla?.slaString}</span>
-  </div>
+        {/* CUISINES */}
+        <p className="text-left text-base text-gray-600 px-1">
+          {cuisines.join(", ").length > 3
+            ? cuisines.join(", ").slice(0, 30) + "..."
+            : cuisines.join(", ")}
+        </p>
 
-  {/* CUISINES */}
-  <p className="text-left text-md text-gray-600 px-1">
-     {cuisines.join(", ").length > 3
-      ? cuisines.join(", ").slice(0, 30) + "..." 
-      : cuisines.join(", ")
-     } 
-     </p>
-
-  {/* AREA */}
-  <p className="text-left px-1">{areaName}</p>
-</div>
+        {/* AREA */}
+        <p className="text-left px-1">{areaName}</p>
+      </div>
     </div>
   );
+};
 
-    };
 // Higher-Order Component (HOC) to add a "OPEN" label to the Res_card component
-    export const withopenlabel = ()=>{
-  return (props)=>{ 
+export const withopenlabel = () => {
+  return (props) => {
     return (
       <div className="relative">
         <Res_card {...props} />
-        <div className=" text-xs absolute top-2 left-2 bg-orange-500 text-white px-2  rounded-full shadow">
+        <div className="text-xs absolute top-2 left-2 bg-orange-500 text-white px-2 rounded-full shadow">
           OPEN
         </div>
       </div>
     );
-
   };
-    };
+};
 
 export default Res_card;
