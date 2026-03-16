@@ -47,7 +47,7 @@ Browsers block direct requests to Swiggy APIs due to security restrictions, so r
 
 **How it works:**
 ```
-Browser → /api handlers → Swiggy API → Server → Browser
+Browser → Proxy Server → Swiggy API → Proxy Server → Browser
 ```
 
 The proxy layer:
