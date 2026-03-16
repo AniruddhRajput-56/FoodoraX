@@ -40,7 +40,19 @@ The project focuses on **performance, clean UI, and scalable React architecture*
 * **Jest + React Testing Library** (for testing)
 
 ---
+## 🛰️ Swiggy API Proxy (CORS Handling)
 
+FoodoraX uses backend API proxy handlers to access Swiggy’s internal APIs without CORS issues.
+Browsers block direct requests to Swiggy APIs due to security restrictions, so requests are routed through a server layer that fetches data and safely returns it to the frontend.
+
+How it works
+Browser → /api handlers → Swiggy API → Server → Browser
+
+The proxy layer:
+Prevents CORS blocking
+Performs server-to-server API requests
+Adds required headers to mimic real browser requests
+Ensures reliable restaurant and menu data fetching
 
 ## ⚙️ Installation & Setup
 
