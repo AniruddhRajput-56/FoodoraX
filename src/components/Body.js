@@ -90,9 +90,9 @@ const Body = () => {
   <div className="flex w-full sm:w-auto items-center gap-2">
     <label className="text-sm font-medium whitespace-nowrap">UserName :</label>
     <input
-      className="w-24 h-7 px-2 text-sm border shadow-md rounded-md
+    className="flex-1 sm:w-50 h-8 px-2 border shadow-md rounded-md
                  font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif]"
-      value={loggedinuser}
+     value={loggedinuser}
       onChange={(e) => setusername(e.target.value)}
     />
   </div>
